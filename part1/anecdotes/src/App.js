@@ -14,8 +14,16 @@ function App() {
   ]
 
   const [selected, setSelected] = useState(0);
+  const pickRandom = () => {
+    while (true) {
+      const next = Math.floor(Math.random() * anecdotes.length);
+      if (next !== selected) {
+        return next;
+      }
+    }
+  }
   const randomAnecdote = () => {
-    const random = Math.floor(Math.random() * anecdotes.length);
+    const random = pickRandom();
     setSelected(random);
   }
 
@@ -23,7 +31,6 @@ function App() {
   for (let i = 0; i < anecdotes.length; i++) {
     points[i] = 0;
   }
-
   const [vote, setVote] = useState(points);
   const castVote = () => {
     const copy = {...vote};
@@ -36,8 +43,10 @@ function App() {
       <h1>Anecdote of the day</h1>
       <div>{anecdotes[selected]}</div>
       <div>has {vote[selected]} votes</div>
-      <button onClick={castVote}>vote</button>
-      <button onClick={randomAnecdote}>next anecdote</button>
+      <div>
+        <button onClick={castVote}>vote</button>
+        <button onClick={randomAnecdote}>next anecdote</button>
+      </div>
       <MostVoted anecdotes={anecdotes} votes={vote} />
     </>
   );
