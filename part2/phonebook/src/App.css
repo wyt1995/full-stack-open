@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.success {
+  padding: 1em;
+  background-color: aliceblue;
+  border: green 1px solid;
+  border-radius: 4px;
+  color: green;
+}
+
+.error {
+  padding: 1em;
+  background-color: aliceblue;
+  border: red 1px solid;
+  border-radius: 4px;
+  color: red;
+}
